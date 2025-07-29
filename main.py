@@ -12,7 +12,7 @@ CORS(app) # Cross-Origin Resource Sharingని అనుమతిస్తు�
 HF_API_TOKEN = os.environ.get("HF_API_TOKEN")
 
 # మీరు Hugging Faceలో ఎంచుకున్న టెక్స్ట్ జనరేషన్ మోడల్ యొక్క Inference API URL
-# ఉదాహరణకు: "https://api-inference.huggingface.co/models/google/gemma-7b-it"
+# ఉదాహరణకు: "https://api-inference.huggingface.co.com/models/google/gemma-7b-it"
 TEXT_GEN_MODEL = "https://api-inference.huggingface.co/models/google/gemma-7b-it"
 
 # మీరు Hugging Faceలో ఎంచుకున్న ఇమేజ్ జనరేషన్ మోడల్ యొక్క Inference API URL
@@ -68,7 +68,8 @@ def ai_tool_proxy():
 
             if isinstance(output, list) and output and 'generated_text' in output[0]:
                 generated_text = output[0]['generated_text']
-                return jsonify({"generatedText": generated_text}), 200
+                # ఇక్కడ మార్పు
+                return jsonify({"result": generated_text}), 200 
             else:
                 return jsonify({"error": "Failed to generate text from model.", "details": output}), 500
 
@@ -80,7 +81,8 @@ def ai_tool_proxy():
                 # ఇమేజ్ బైట్‌లను base64లోకి ఎన్కోడ్ చేయండి
                 base64_image = base64.b64encode(image_bytes).decode('utf-8')
                 # బ్రౌజర్‌లో డిస్ప్లే చేయడానికి data URIని తిరిగి ఇవ్వండి
-                return jsonify({"imageUrl": f"data:image/jpeg;base64,{base64_image}"}), 200
+                # ఇక్కడ మార్పు
+                return jsonify({"result": f"data:image/jpeg;base64,{base64_image}"}), 200
             else:
                 return jsonify({"error": "Failed to generate image from model."}), 500
 
