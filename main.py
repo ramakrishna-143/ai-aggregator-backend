@@ -12,12 +12,10 @@ CORS(app) # Cross-Origin Resource Sharingని అనుమతిస్తు�
 HF_API_TOKEN = os.environ.get("HF_API_TOKEN")
 
 # మీరు Hugging Faceలో ఎంచుకున్న టెక్స్ట్ జనరేషన్ మోడల్ యొక్క Inference API URL
-# ఉదాహరణకు: "https://api-inference.huggingface.co/models/google/gemma-7b-it"
-TEXT_GEN_MODEL = "https://api-inference.huggingface.co/models/google/gemma-7b-it"
+TEXT_GEN_MODEL = ""https://api-inference.huggingface.co/models/distilbert/distilgpt2""
 
 # మీరు Hugging Faceలో ఎంచుకున్న ఇమేజ్ జనరేషన్ మోడల్ యొక్క Inference API URL
-# ఉదాహరణకు: "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
-IMAGE_GEN_MODEL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+IMAGE_GEN_MODEL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
 
 headers = {
     "Authorization": f"Bearer {HF_API_TOKEN}",
